@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { ArsComponentsComponent } from './ars-components.component';
+import { CheckboxComponent } from './checkbox/checkbox.component';
+import { TextinputComponent } from './textinput/textinput.component';
 
 @NgModule({
   imports: [
   ],
-  declarations: [ArsComponentsComponent],
+  declarations: [ArsComponentsComponent, CheckboxComponent, TextinputComponent],
   exports: [ArsComponentsComponent]
 })
 export class ArsComponentsModule { }
