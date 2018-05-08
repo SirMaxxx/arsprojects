@@ -292,6 +292,120 @@
           }
         }
       }
+    },
+    "arsapp": {
+      "root": "projects/arsapp/",
+      "sourceRoot": "projects/arsapp/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/arsapp",
+            "index": "projects/arsapp/src/index.html",
+            "main": "projects/arsapp/src/main.ts",
+            "polyfills": "projects/arsapp/src/polyfills.ts",
+            "tsConfig": "projects/arsapp/tsconfig.app.json",
+            "assets": [
+              "projects/arsapp/src/favicon.ico",
+              "projects/arsapp/src/assets"
+            ],
+            "styles": [
+              "projects/arsapp/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/arsapp/src/environments/environment.ts",
+                  "with": "projects/arsapp/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "arsapp:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "arsapp:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "arsapp:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/arsapp/src/test.ts",
+            "polyfills": "projects/arsapp/src/polyfills.ts",
+            "tsConfig": "projects/arsapp/tsconfig.spec.json",
+            "karmaConfig": "projects/arsapp/karma.conf.js",
+            "styles": [
+              "projects/arsapp/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/arsapp/src/favicon.ico",
+              "projects/arsapp/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/arsapp/tsconfig.app.json",
+              "projects/arsapp/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "arsapp-e2e": {
+      "root": "projects/arsapp-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/arsapp-e2e/protractor.conf.js",
+            "devServerTarget": "arsapp:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/arsapp-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "arsprojects"
