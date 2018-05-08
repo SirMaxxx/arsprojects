@@ -7,6 +7,6 @@ import { TextinputComponent } from './textinput/textinput.component';
   imports: [
   ],
   declarations: [ArsComponentsComponent, CheckboxComponent, TextinputComponent],
-  exports: [ArsComponentsComponent]
+  exports: [ArsComponentsComponent, CheckboxComponent, TextinputComponent]
 })
 export class ArsComponentsModule { }

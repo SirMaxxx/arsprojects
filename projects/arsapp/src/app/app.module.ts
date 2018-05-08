@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { ArsComponentsModule } from 'ars-components';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, ArsComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
