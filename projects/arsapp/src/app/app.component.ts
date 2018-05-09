@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  checkboxChanged(event: any) {
+    if (event) {
+      this.title = 'It Is Cool';
+    } else {
+      this.title = 'It is a little cool?';
+    }
+  }
 }
