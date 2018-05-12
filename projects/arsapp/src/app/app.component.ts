@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,13 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  arsForm: FormGroup;
+  constructor(private fb: FormBuilder) {
+    this.createForm();
+  }
 
+  private createForm() {
+    this.arsForm = this.fb.group({
+      areYouSure: [true, Validators.requiredTrue],
+      yourName: ['', Validators.required],
+    });
+  }
   checkboxChanged(event: any) {
-    if (event) {
-      this.title = 'It Is Cool';
-    } else {
-      this.title = 'It is a little cool?';
-    }
+
   }
 }

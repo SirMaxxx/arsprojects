@@ -1,3 +1,16 @@
 <h1>{{title}}</h1>
-<ars-checkbox [label]="'Is this cool?'" [isChecked]="true" (checkedChanged)="checkboxChanged($event)"></ars-checkbox>
-<ars-textinput></ars-textinput>
+
+
+<form [formGroup]="arsForm">
+    <div>
+        <label class="center-block">Name:
+            <input class="form-control" formControlName="yourName">
+        </label>
+        <ars-checkbox formControlName="areYouSure" [label]="'Is this cool?'" [isChecked]="true" (checkedChanged)="checkboxChanged($event)"></ars-checkbox>
+    </div>
+</form>
+
+
+
+<p>Form value: {{ arsForm.value | json }}</p>
+<p>Form status: {{ arsForm.status | json }}</p>
