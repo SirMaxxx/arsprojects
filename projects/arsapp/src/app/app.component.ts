@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  sureOrNot = false;
   arsForm: FormGroup;
   constructor(private fb: FormBuilder) {
     this.createForm();
