@@ -1,13 +1,10 @@
-<h1>{{title}}</h1>
-
-
 <form [formGroup]="arsForm">
-    <div>
-        <label class="center-block">Name:
-            <input class="form-control" formControlName="yourName">
-        </label>
-        <ars-checkbox formControlName="areYouSure" [label]="'Is this cool?'"></ars-checkbox>
-    </div>
+  <div>
+    <label>Name:
+      <input formControlName="yourName">
+    </label>
+    <ars-checkbox formControlName="areYouSure" [label]="'Is this cool?'"></ars-checkbox>
+  </div>
 </form>
 
 

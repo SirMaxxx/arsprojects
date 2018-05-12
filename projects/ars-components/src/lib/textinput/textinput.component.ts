@@ -1,5 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  forwardRef
+} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'ars-textinput',
@@ -13,11 +20,26 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
     }
   ]
 })
-export class TextinputComponent implements OnInit {
-  @Input() label: string = '';
-  constructor() { }
+export class TextinputComponent implements OnInit, ControlValueAccessor {
+  @Input() label = '';
 
-  ngOnInit() {
+  // Function to call when the value changes.
+  onChange = (checked: boolean) => {};
+  onTouched = () => {};
+
+  constructor() {}
+
+  ngOnInit() {}
+  checkedChanged(event: any) {
+    this.onChange(event.target.checked);
   }
 
+  writeValue(value: string) {}
+  registerOnChange(fn: (checked: boolean) => void): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {}
 }

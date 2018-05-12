@@ -16,10 +16,7 @@ export class AppComponent {
   private createForm() {
     this.arsForm = this.fb.group({
       areYouSure: [true, Validators.requiredTrue],
-      yourName: ['', Validators.required],
+      yourName: ['', Validators.required]
     });
-  }
-  checkboxChanged(event: any) {
-
   }
 }
