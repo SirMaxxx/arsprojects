@@ -22,23 +22,26 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
   @Input() disabled = false;
 
   // Function to call when the value changes.
-  onChange = (checked: boolean) => {};
-  onTouched = () => {};
+  onChange: any;
+  // Function to call whern the component is touched
+  onTouched: any;
 
   constructor() {}
 
   ngOnInit() {}
 
-  checkedChanged(event: any) {
+  valueChanged(event: any) {
     this.onChange(event.target.checked);
   }
 
   writeValue(checked: boolean) {
     this.isChecked = checked;
   }
-  registerOnChange(fn: (checked: boolean) => void): void {
+  // Called by Abgular Forms to tell this component which function to call when its value changes
+  registerOnChange(fn: any): void {
     this.onChange = fn;
   }
+
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
