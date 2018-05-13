@@ -18,11 +18,13 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
   @Input() label = '';
   /** Whether ther checkbox is checked or not */
   @Input() isChecked = false;
+
   /** Whether the checkbox is disabled  */
-  @Input() disabled = false;
+  disabled = false;
 
   // Function to call when the value changes.
   onChange: any;
+
   // Function to call whern the component is touched
   onTouched: any;
 
@@ -30,21 +32,34 @@ export class CheckboxComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {}
 
+  /** Called from DOM when value is changed */
   valueChanged(event: any) {
     this.onChange(event.target.checked);
   }
 
+  touched() {
+    this.onTouched();
+  }
+
+  /**
+   * ControlValueAccessor Implementation
+   */
+
+  /** Forms telling this component to write a new value  */
   writeValue(checked: boolean) {
     this.isChecked = checked;
   }
-  // Called by Abgular Forms to tell this component which function to call when its value changes
+  // Forms uses this method to tell this component which function to call when its value changes
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
 
+  // Forms uses this method to tell this component which function to call when it is touched
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
+
+  // Forms uses this method to tell this component to disable itself
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }

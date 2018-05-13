@@ -1,1 +1,2 @@
 <input type="text" (change)="onChange($event)">
+<input type="text" (change)="onChange($event)" (onblur)="touched()" [disabled]="disabled">
