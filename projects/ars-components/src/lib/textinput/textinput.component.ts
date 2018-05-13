@@ -17,6 +17,7 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
   /** The label shown in front of the text box */
   @Input() label = '';
 
+  value = '';
   /** Whether the textbox is disabled  */
   disabled = false;
 
@@ -32,7 +33,9 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
 
   /** Called from DOM when value is changed */
   valueChanged(event: any) {
-    this.onChange(event.target.checked);
+    console.log('the event is ', event);
+    this.value = event.target.value;
+    this.onChange(event.target.value);
   }
 
   touched() {
@@ -44,14 +47,21 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
    */
 
   /** Forms telling this component to write a new value  */
-  writeValue(value: string) {}
+  writeValue(value: string) {
+    console.log('write value ', value);
+
+    this.value = value;
+  }
   // Forms uses this method to tell this component which function to call when its value changes
   registerOnChange(fn: any): void {
+    console.log('Register on change');
+
     this.onChange = fn;
   }
 
   // Forms uses this method to tell this component which function to call when it is touched
   registerOnTouched(fn: () => void): void {
+    console.log('Register on touch');
     this.onTouched = fn;
   }
 
