@@ -17,7 +17,8 @@ export class AppComponent {
     this.arsForm = this.fb.group({
       areYouSure: [true, Validators.requiredTrue],
       yourName1: ['xxx', Validators.required],
-      yourName2: ['yyy', Validators.required]
+      yourName2: ['yyy', Validators.required],
+      yourName3: ['zzz', Validators.required]
     });
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { BaseComponent } from '../base.component';
 
 @Component({
   selector: 'ars-checkbox',
@@ -13,54 +14,28 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class CheckboxComponent implements OnInit, ControlValueAccessor {
+export class CheckboxComponent extends BaseComponent implements OnInit {
   /** The label shown in front of the check box */
   @Input() label = '';
-  /** Whether ther checkbox is checked or not */
-  @Input() isChecked = false;
 
-  /** Whether the checkbox is disabled  */
-  disabled = false;
+  constructor() {
+    super();
+  }
 
-  // Function to call when the value changes.
-  onChange: any;
-
-  // Function to call whern the component is touched
-  onTouched: any;
-
-  constructor() {}
-
+  //#region Angular implementations
   ngOnInit() {}
+  //#endregion
 
+  //#region DOM event handlers
   /** Called from DOM when value is changed */
   valueChanged(event: any) {
+    this.value = event.target.checked;
     this.onChange(event.target.checked);
   }
 
+  /** Called from DOM when control is touched */
   touched() {
     this.onTouched();
   }
-
-  /**
-   * ControlValueAccessor Implementation
-   */
-
-  /** Forms telling this component to write a new value  */
-  writeValue(checked: boolean) {
-    this.isChecked = checked;
-  }
-  // Forms uses this method to tell this component which function to call when its value changes
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-  // Forms uses this method to tell this component which function to call when it is touched
-  registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
-  }
-
-  // Forms uses this method to tell this component to disable itself
-  setDisabledState?(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
+  //#endregion
 }

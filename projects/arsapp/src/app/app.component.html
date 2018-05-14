@@ -1,12 +1,13 @@
 <form [formGroup]="arsForm">
-    <div>
-        <label>Name:
-            <input formControlName="yourName1">
-            <br>
-            <ars-textinput formControlName="yourName2"></ars-textinput>
-        </label>
-        <ars-checkbox formControlName="areYouSure" [label]="'Are you sure?'"></ars-checkbox>
-    </div>
+  <div>
+    <label>Name:
+      <input formControlName="yourName1">
+      <br>
+      <ars-textinput formControlName="yourName2" [label]="'hello'"></ars-textinput>
+      <ars-textinput formControlName="yourName3" [label]="'goodbye'"></ars-textinput>
+    </label>
+    <ars-checkbox formControlName="areYouSure" [label]="'Are you sure?'"></ars-checkbox>
+  </div>
 </form>
 
 

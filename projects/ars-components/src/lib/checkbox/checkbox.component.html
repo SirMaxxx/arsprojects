@@ -1,2 +1,2 @@
 <label>{{label}}</label>
-<input type="checkbox" [checked]="isChecked" (change)="valueChanged($event)" (onblur)="touched()" [disabled]="disabled">
+<input type="checkbox" [checked]="value" (input)="valueChanged($event)" (onblur)="touched()" [disabled]="disabled">

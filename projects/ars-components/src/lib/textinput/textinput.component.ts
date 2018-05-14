@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { BaseComponent } from '../base.component';
 
 @Component({
   selector: 'ars-textinput',
@@ -13,60 +14,28 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class TextInputComponent implements OnInit, ControlValueAccessor {
+export class TextInputComponent extends BaseComponent implements OnInit {
   /** The label shown in front of the text box */
   @Input() label = '';
 
-  value = '';
-  /** Whether the textbox is disabled  */
-  disabled = false;
+  constructor() {
+    super();
+  }
 
-  // Function to call when the value changes.
-  onChange: any;
-
-  // Function to call whern the component is touched
-  onTouched: any;
-
-  constructor() {}
-
+  //#region Angular implementations
   ngOnInit() {}
+  //#endregion
 
+  //#region DOM event handlers
   /** Called from DOM when value is changed */
   valueChanged(event: any) {
-    console.log('the event is ', event);
     this.value = event.target.value;
     this.onChange(event.target.value);
   }
 
+  /** Called from DOM when control is touched */
   touched() {
     this.onTouched();
   }
-
-  /**
-   * ControlValueAccessor Implementation
-   */
-
-  /** Forms telling this component to write a new value  */
-  writeValue(value: string) {
-    console.log('write value ', value);
-
-    this.value = value;
-  }
-  // Forms uses this method to tell this component which function to call when its value changes
-  registerOnChange(fn: any): void {
-    console.log('Register on change');
-
-    this.onChange = fn;
-  }
-
-  // Forms uses this method to tell this component which function to call when it is touched
-  registerOnTouched(fn: () => void): void {
-    console.log('Register on touch');
-    this.onTouched = fn;
-  }
-
-  // Forms uses this method to tell this component to disable itself
-  setDisabledState?(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
+  //#endregion
 }
