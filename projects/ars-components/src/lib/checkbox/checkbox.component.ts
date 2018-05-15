@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BaseComponent } from '../base.component';
+
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { MatCheckboxChange } from '@angular/material';
 
 @Component({
   selector: 'ars-checkbox',
@@ -28,9 +29,9 @@ export class CheckboxComponent extends BaseComponent implements OnInit {
 
   //#region DOM event handlers
   /** Called from DOM when value is changed */
-  valueChanged(event: any) {
-    this.value = event.target.checked;
-    this.onChange(event.target.checked);
+
+  valueChanged(event: MatCheckboxChange) {
+    this.onChange(event.checked);
   }
 
   /** Called from DOM when control is touched */
