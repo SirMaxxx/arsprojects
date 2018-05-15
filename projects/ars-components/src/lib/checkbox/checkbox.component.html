@@ -1,2 +1,3 @@
-<label>{{label}}</label>
-<input type="checkbox" [checked]="isChecked" (change)="valueChanged($event)" (onblur)="touched()" [disabled]="disabled">
+<mat-checkbox [checked]="isChecked" (change)="valueChanged($event)" (onblur)="touched()" [disabled]="disabled">
+    <ng-content></ng-content>
+</mat-checkbox>
