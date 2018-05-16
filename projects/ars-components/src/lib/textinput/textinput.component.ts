@@ -15,7 +15,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class TextInputComponent implements OnInit, ControlValueAccessor {
   /** The label shown in front of the text box */
-  @Input() label = '';
+  @Input() placeholder = '';
 
   value = '';
   /** Whether the textbox is disabled  */
