@@ -1,9 +1,6 @@
 <form [formGroup]="arsForm">
-
   <div>
-    <label>Name:
-      <ars-textinput formControlName="yourName2"></ars-textinput>
-    </label>
+    <ars-textinput formControlName="yourName2" [placeholder]="'Who is you?'"></ars-textinput>
     <ars-checkbox formControlName="areYouSure">Are You Sure?</ars-checkbox>
   </div>
 </form>

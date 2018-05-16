@@ -16,7 +16,7 @@ import { BaseComponent } from '../base.component';
 })
 export class TextInputComponent extends BaseComponent implements OnInit {
   /** The label shown in front of the text box */
-  @Input() label = '';
+  @Input() placeholder = '';
 
   constructor() {
     super();
