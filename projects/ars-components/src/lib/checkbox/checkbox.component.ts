@@ -2,6 +2,7 @@ import { Component, OnInit, Input, forwardRef } from '@angular/core';
 
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material';
+import { BaseComponent } from '../base.component';
 
 @Component({
   selector: 'ars-checkbox',
