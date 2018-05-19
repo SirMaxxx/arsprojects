@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ArsComponentsComponent } from './ars-components.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { TextInputComponent } from './textinput/textinput.component';
+import { ButtonComponent } from './button/button.component';
 
 import {
   MatButtonModule,
@@ -17,7 +18,17 @@ import {
     MatCheckboxModule,
     MatInputModule
   ],
-  declarations: [ArsComponentsComponent, CheckboxComponent, TextInputComponent],
-  exports: [ArsComponentsComponent, CheckboxComponent, TextInputComponent]
+  declarations: [
+    ArsComponentsComponent,
+    CheckboxComponent,
+    TextInputComponent,
+    ButtonComponent
+  ],
+  exports: [
+    ArsComponentsComponent,
+    CheckboxComponent,
+    TextInputComponent,
+    ButtonComponent
+  ]
 })
 export class ArsComponentsModule {}
