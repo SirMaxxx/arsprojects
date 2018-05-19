@@ -1,0 +1,17 @@
+<form [formGroup]="customerDetailForm">
+  <div>
+    <ars-textinput formControlName="id" [placeholder]="'Unique Customer Id'"></ars-textinput>
+    <ars-textinput formControlName="name" [placeholder]="'Customer Name'"></ars-textinput>
+    <ars-textinput formControlName="address" [placeholder]="'Address'"></ars-textinput>
+    <ars-textinput formControlName="email" [placeholder]="'email'"></ars-textinput>
+    <ars-textinput formControlName="phone" [placeholder]="'Phone'"></ars-textinput>
+    <ars-checkbox formControlName="active">Is customer active?</ars-checkbox>
+    <ars-button (click)="clicked()">Click-a-me</ars-button>
+
+  </div>
+</form>
+
+
+
+<p>Form value: {{ customerDetailForm.value | json }}</p>
+<p>Form status: {{ customerDetailForm.status | json }}</p>
