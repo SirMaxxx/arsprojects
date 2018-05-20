@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ArsComponentsModule } from 'ars-components';
 import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { CustomersComponent } from './customers/customers.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent, CustomerDetailComponent, CustomersComponent],
@@ -15,7 +16,8 @@ import { CustomersComponent } from './customers/customers.component';
     BrowserModule,
     ReactiveFormsModule,
     ArsComponentsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
