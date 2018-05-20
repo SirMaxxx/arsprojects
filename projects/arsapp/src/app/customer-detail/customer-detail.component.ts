@@ -40,6 +40,6 @@ export class CustomerDetailComponent implements OnInit {
   }
 
   clicked() {
-    console.log('button clicked');
+    this.customerService.changeCustomer();
   }
 }
