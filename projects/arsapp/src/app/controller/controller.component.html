@@ -4,10 +4,9 @@
   &nbsp;
   <a routerLink="/">Home</a>
 </nav>
-Routname = {{routeName}}
+<!-- Routname = {{routeName}}
 <br> ComponentName = {{componentName}}
-<br> There are {{customers?.length}} customers
+<br> There are {{customers?.length}} customers -->
 
 <app-customer-detail *ngIf="componentName === 'CustomerDetail' && customer" [customer]="customer"></app-customer-detail>
-{{customers | json}}
 <app-customers *ngIf="componentName === 'Customers' " [customers]="customers"></app-customers>
