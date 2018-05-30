@@ -1,14 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   ActivatedRoute,
+  NavigationEnd,
   ParamMap,
-  Router,
-  NavigationEnd
+  Router
 } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { switchMap, take } from 'rxjs/operators';
-import { Customer, ControllerService } from '../shared';
-import { InnerSubscriber } from 'rxjs/internal/InnerSubscriber';
+import { take } from 'rxjs/operators';
+import { ControllerService, Customer } from '../shared';
 
 @Component({
   selector: 'app-controller',
@@ -49,13 +48,13 @@ export class ControllerComponent implements OnInit, OnDestroy {
       this.subscriptiontoGetCustomers.unsubscribe();
     }
   }
-  private determineRoute(): string {
+  private determineRoute() {
     if (this.route.snapshot.url.length === 0) {
-      return 'customers'; // No params, show customer liet
+      this.routeName = 'customers'; // No params, show customer liet
+    } else {
+      this.routeName = this.route.snapshot.url[0].path;
     }
     this.determineRouteParams();
-
-    this.routeName = this.route.snapshot.url[0].path;
   }
   /**
    * Route Param rules:
