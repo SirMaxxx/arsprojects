@@ -17,7 +17,7 @@ export class CustomerService {
     return this.http.get<Array<Customer>>(`${this.url}/customers`);
   }
 
-  public changeCustomer() {
-    //    this.customers[0].name = 'Changed';
+  public updateCustomer(customer: Customer) {
+    return this.http.patch(`${this.url}/customers/${customer.id}`, customer);
   }
 }

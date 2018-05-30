@@ -1,18 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { CustomerService, Customer } from '../shared';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input
+} from '@angular/core';
+import { Customer, ControllerService } from '../shared';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.css']
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomersComponent implements OnInit {
-  customers$: Observable<Array<Customer>>;
+  @Input() customers: Array<Customer>;
 
-  constructor(private customerService: CustomerService) {}
+  constructor(private controllerService: ControllerService) {}
 
-  ngOnInit() {
-    this.customers$ = this.customerService.getCustomers();
-  }
+  ngOnInit() {}
 }

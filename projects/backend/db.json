@@ -2,10 +2,11 @@
   "customers": [
     {
       "id": "1",
-      "name": "John Smith",
+      "name": "Fred Smith",
       "address": "23 High Street, Netherwollop",
       "email": "john@nether.com",
-      "phone": "0404 444444"
+      "phone": "0404 444444",
+      "active": true
     },
     {
       "id": "2",

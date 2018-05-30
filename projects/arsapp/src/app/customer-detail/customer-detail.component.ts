@@ -1,11 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 
-import { Customer } from '../shared';
+import { Customer, ControllerService } from '../shared';
 
-import { CustomerService } from '../shared';
 @Component({
   selector: 'app-customer-detail',
   templateUrl: './customer-detail.component.html',
@@ -13,21 +10,19 @@ import { CustomerService } from '../shared';
 })
 export class CustomerDetailComponent implements OnInit {
   customerDetailForm: FormGroup;
-  @Input() customer: Customer;
+  @Input() customer: Customer = null;
   constructor(
     private fb: FormBuilder,
-    private customerService: CustomerService,
-    private route: ActivatedRoute
+    private controllerService: ControllerService
   ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.customerService.getCustomer(id).subscribe(customer => {
-      this.customer = customer;
-      this.createForm();
-    });
+    this.getCustomerToEdit();
   }
 
+  private getCustomerToEdit() {
+    this.createForm();
+  }
   private createForm() {
     this.customerDetailForm = this.fb.group({
       id: [this.customer.id, Validators.required],
@@ -40,6 +35,16 @@ export class CustomerDetailComponent implements OnInit {
   }
 
   clicked() {
-    this.customerService.changeCustomer();
+    console.log('I have been clicked');
+    const f = this.customerDetailForm.value;
+    const customer: Customer = {
+      id: f.id,
+      active: f.active,
+      name: f.name,
+      address: f.address,
+      email: f.email,
+      phone: f.phone
+    };
+    this.controllerService.updateCustomer(customer);
   }
 }

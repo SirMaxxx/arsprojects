@@ -1,0 +1,13 @@
+<h3>Navigation</h3>
+<nav>
+  <a routerLink="/customers">Customers</a>
+  &nbsp;
+  <a routerLink="/">Home</a>
+</nav>
+Routname = {{routeName}}
+<br> ComponentName = {{componentName}}
+<br> There are {{customers?.length}} customers
+
+<app-customer-detail *ngIf="componentName === 'CustomerDetail' && customer" [customer]="customer"></app-customer-detail>
+
+<app-customers *ngIf="componentName === 'Customers' " [customers]="customers"></app-customers>

@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CustomersComponent } from './customers/customers.component';
+import { ControllerComponent } from './controller/controller.component';
 import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 
 const routes: Routes = [
-  { path: 'customers', component: CustomersComponent },
-  { path: 'customers/:id', component: CustomerDetailComponent },
-  { path: '', redirectTo: '/', pathMatch: 'full' }
+  {
+    path: 'customers',
+    component: ControllerComponent,
+    runGuardsAndResolvers: 'always'
+  },
+  {
+    path: 'customers/:id',
+    component: ControllerComponent,
+    runGuardsAndResolvers: 'always'
+  },
+  { path: '', component: ControllerComponent }
 ];
 
 @NgModule({

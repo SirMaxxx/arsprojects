@@ -9,9 +9,10 @@ import { ArsComponentsModule } from 'ars-components';
 import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { CustomersComponent } from './customers/customers.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ControllerComponent } from './controller/controller.component';
 
 @NgModule({
-  declarations: [AppComponent, CustomerDetailComponent, CustomersComponent],
+  declarations: [AppComponent, CustomerDetailComponent, CustomersComponent, ControllerComponent],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
