@@ -5,16 +5,16 @@ import { CustomerDetailComponent } from './customer-detail/customer-detail.compo
 
 const routes: Routes = [
   {
-    path: 'customers',
+    path: 'customers/*',
     component: ControllerComponent,
     runGuardsAndResolvers: 'always'
   },
+
   {
-    path: 'customers/:id',
+    path: '**',
     component: ControllerComponent,
     runGuardsAndResolvers: 'always'
-  },
-  { path: '', component: ControllerComponent }
+  }
 ];
 
 @NgModule({

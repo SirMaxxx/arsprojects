@@ -1,5 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import {
+  ActivatedRoute,
+  ParamMap,
+  Router,
+  NavigationEnd
+} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
 import { Customer, ControllerService } from '../shared';
@@ -18,29 +23,39 @@ export class ControllerComponent implements OnInit, OnDestroy {
 
   public componentName: string;
 
-  private getCustomerSubscription: Subscription;
+  private subscriptiontoGetCustomers: Subscription;
+  private subscriptionToGetCustomer: Subscription;
 
   constructor(
     private controllerService: ControllerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     console.log('Init controller coponent');
-    this.routeName = this.determineRoute();
-    console.log('Route name ', this.routeName);
-    this.determineRouteParams();
+
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
+        console.log('Got a navigationEnd event');
+        this.determineRoute();
+      }
+    });
+
+    this.determineRoute();
   }
-  ngOnDestroy() {
-    if (this.getCustomerSubscription) {
-      this.getCustomerSubscription.unsubscribe();
+  public ngOnDestroy() {
+    if (this.subscriptiontoGetCustomers) {
+      this.subscriptiontoGetCustomers.unsubscribe();
     }
   }
   private determineRoute(): string {
     if (this.route.snapshot.url.length === 0) {
       return 'customers'; // No params, show customer liet
     }
-    return this.route.snapshot.url[0].path;
+    this.determineRouteParams();
+
+    this.routeName = this.route.snapshot.url[0].path;
   }
   /**
    * Route Param rules:
@@ -48,9 +63,11 @@ export class ControllerComponent implements OnInit, OnDestroy {
    * customers?id= edits that customer
    */
   private determineRouteParams() {
-    this.route.paramMap.subscribe((params: ParamMap) => {
+    this.route.paramMap.pipe(take(1)).subscribe((params: ParamMap) => {
       // (+) before `params.get()` turns the string into a number
       const id = params.get('id');
+      console.log('Got id and it was ', id);
+
       if (id) {
         this.showCustomer(id);
       } else {
@@ -61,8 +78,10 @@ export class ControllerComponent implements OnInit, OnDestroy {
 
   private showCustomerList() {
     console.log('Showing customer list');
-
-    this.getCustomerSubscription = this.controllerService
+    if (this.subscriptiontoGetCustomers) {
+      this.subscriptiontoGetCustomers.unsubscribe();
+    }
+    this.subscriptiontoGetCustomers = this.controllerService
       .getCustomers()
       .pipe(take(1))
       .subscribe(customers => {
@@ -74,8 +93,10 @@ export class ControllerComponent implements OnInit, OnDestroy {
 
   private showCustomer(id: string) {
     console.log('Showing customer detail');
-
-    this.controllerService
+    if (this.subscriptionToGetCustomer) {
+      this.subscriptionToGetCustomer.unsubscribe();
+    }
+    this.subscriptionToGetCustomer = this.controllerService
       .getCustomer(id)
       .pipe(take(1))
       .subscribe(customer => {
