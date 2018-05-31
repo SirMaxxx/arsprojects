@@ -7,12 +7,17 @@ import { AppComponent } from './app.component';
 
 import { ArsComponentsModule } from 'ars-components';
 import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
-import { CustomersComponent } from './customers/customers.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ControllerComponent } from './controller/controller.component';
 
 @NgModule({
-  declarations: [AppComponent, CustomerDetailComponent, CustomersComponent, ControllerComponent],
+  declarations: [
+    AppComponent,
+    CustomerDetailComponent,
+    CustomerListComponent,
+    ControllerComponent
+  ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,

@@ -10,11 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-customers',
-  templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.css']
+  templateUrl: './customer-list.component.html',
+  styleUrls: ['./customer-list.component.css']
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CustomersComponent implements OnInit {
+export class CustomerListComponent implements OnInit {
   @Input() customers: Array<Customer>;
 
   constructor(

@@ -13,22 +13,26 @@ import { CustomerService } from '../shared';
 
 @Injectable()
 export class CustomersResolver implements Resolve<Array<Customer>> {
-  constructor(private cs: CustomerService, private router: Router) {}
+  constructor(
+    private customerService: CustomerService,
+    private router: Router
+  ) {}
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<Array<Customer>> {
-    console.log('IN the resolver');
+    console.log('In the Customers resolver');
 
-    return this.cs.getCustomers().pipe(
+    return this.customerService.getCustomers().pipe(
       take(1),
       map(customer => {
         if (customer) {
           return customer;
         } else {
-          // id not found
-          this.router.navigate(['/customers']);
+          console.log('No Customers Found - navigating to root');
+
+          this.router.navigate(['/']);
           return null;
         }
       })

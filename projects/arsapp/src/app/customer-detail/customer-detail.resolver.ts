@@ -20,6 +20,7 @@ export class CustomerDetailResolver implements Resolve<Customer> {
     state: RouterStateSnapshot
   ): Observable<Customer> {
     const id = route.paramMap.get('id');
+    console.log('In the details resolver');
 
     return this.cs.getCustomer(id).pipe(
       take(1),

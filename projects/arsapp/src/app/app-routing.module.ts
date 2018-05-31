@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ControllerComponent } from './controller/controller.component';
 import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { CustomerDetailResolver } from './customer-detail/customer-detail.resolver';
-import { CustomersComponent } from './customers/customers.component';
-import { CustomersResolver } from './customers/customers.resolver';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+import { CustomersResolver } from './customer-list/customer-list.resolver';
 
 const routes: Routes = [
   {
@@ -21,7 +21,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        component: CustomersComponent,
+        component: CustomerListComponent,
         resolve: {
           customers: CustomersResolver
         }
