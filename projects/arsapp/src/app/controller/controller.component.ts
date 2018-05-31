@@ -15,23 +15,15 @@ import { ControllerService, Customer } from '../shared';
   styleUrls: ['./controller.component.css']
 })
 export class ControllerComponent implements OnInit {
-  public customer: Customer; // the customer we're currently dealing with
   public customers: Array<Customer>;
-  public routeName: string; // the route determined frome
-  public routeParams: Array<string>;
 
-  public componentName: string;
-
-  private subscriptiontoGetCustomers: Subscription;
-  private subscriptionToGetCustomer: Subscription;
-
-  constructor(
-    private controllerService: ControllerService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  constructor(private controllerService: ControllerService) {}
 
   public ngOnInit() {
-    console.log('Init controller coponent - should only see this once');
+    console.log('Init controller component - should only see this once');
+    // experiment follows
+    this.controllerService.getCustomers().subscribe(c => {
+      this.customers = c;
+    });
   }
 }

@@ -29,8 +29,9 @@ const routes: Routes = [
     ]
   },
   {
-    path: '**',
-    component: ControllerComponent,
+    path: '',
+    redirectTo: 'customers',
+    pathMatch: 'full',
     runGuardsAndResolvers: 'always'
   }
 ];
