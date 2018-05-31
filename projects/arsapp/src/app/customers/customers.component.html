@@ -1,5 +1,5 @@
-List of customers
-<a *ngFor="let customer of customers" [routerLink]="['/customers', { id: customer.id }]">
+List of customers {{customers | json}}
+<a *ngFor="let customer of customers" [routerLink]="['/customers/'+customer.id]">
 
   <div>
     {{customer.id}} {{customer.name}} {{customer.address}} {{customer.phone}}

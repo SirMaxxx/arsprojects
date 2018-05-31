@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Customer, ControllerService } from '../shared';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-detail',
@@ -13,11 +14,18 @@ export class CustomerDetailComponent implements OnInit {
   @Input() customer: Customer = null;
   constructor(
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     private controllerService: ControllerService
   ) {}
 
   ngOnInit() {
-    this.getCustomerToEdit();
+    // this.getCustomerToEdit();
+    this.route.data.subscribe((data: { customer: Customer }) => {
+      console.log('God subscription data - ', data);
+
+      this.customer = data.customer;
+      this.createForm();
+    });
   }
 
   private getCustomerToEdit() {

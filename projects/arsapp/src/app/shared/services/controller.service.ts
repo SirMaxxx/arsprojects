@@ -22,7 +22,7 @@ export class ControllerService {
       this.customerService.getCustomers().subscribe(customers => {
         this.customers = customers;
         this.customers$.next(this.customers);
-        console.log('next in subscribe ß with ', this.customers.length);
+        console.log('next in subscribe with ', this.customers.length);
       });
     } else {
       console.log('next with ', this.customers.length);

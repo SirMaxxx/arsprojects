@@ -8,5 +8,9 @@
 <br> ComponentName = {{componentName}}
 <br> There are {{customers?.length}} customers -->
 
-<app-customer-detail *ngIf="componentName === 'CustomerDetail' && customer" [customer]="customer"></app-customer-detail>
+<router-outlet></router-outlet>
+
+<!-- <app-customer-detail *ngIf="componentName === 'CustomerDetail' && customer" [customer]="customer"></app-customer-detail>
 <app-customers *ngIf="componentName === 'Customers' " [customers]="customers"></app-customers>
+
+-->

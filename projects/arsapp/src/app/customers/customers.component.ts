@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { Customer, ControllerService } from '../shared';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-customers',
@@ -16,7 +17,15 @@ import { Observable } from 'rxjs';
 export class CustomersComponent implements OnInit {
   @Input() customers: Array<Customer>;
 
-  constructor(private controllerService: ControllerService) {}
+  constructor(
+    private controllerService: ControllerService,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.data.subscribe((data: { customers: Array<Customer> }) => {
+      console.log('Got subscription data - ', data);
+      this.customers = data.customers;
+    });
+  }
 }

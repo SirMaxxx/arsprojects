@@ -63,7 +63,8 @@ export class ControllerComponent implements OnInit, OnDestroy {
    */
   private determineRouteParams() {
     this.route.paramMap.pipe(take(1)).subscribe((params: ParamMap) => {
-      // (+) before `params.get()` turns the string into a number
+      console.log('Getting id from ', params);
+
       const id = params.get('id');
       console.log('Got id and it was ', id);
 
